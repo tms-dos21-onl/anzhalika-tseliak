@@ -69,9 +69,9 @@ sudo timedatectl set-timezone Europe/Paris
 uname -r
 ```
 AlmaLinux  
-()
-Ubuntu  
-()
+![](/HW1/assets/2-1.png)   
+Ubuntu    
+![](/HW1/assets/2-2.png) 
 
 # Вывести список модулей ядра и записать в файл
 ```bash
@@ -80,41 +80,86 @@ lsmod > ~/modules.txt
 Проверка файла с помощью cat:  
 
 Almalinux
-()  
+![](/HW1/assets/3-1.png)   
 Ubuntu
-()
+![](/HW1/assets/3-2.png) 
 # Просмотреть информацию о процессоре и модулях оперативной памяти
 Процессор:
 ```bash
 lscpu
 ```
 Almalinux    
-()  
+![](/HW1/assets/4-1.png)   
 Ubuntu    
-()  
+![](/HW1/assets/4-2.png)  
 модули:
 
 ```bash
-sudo dmidecode 
+dmidecode --type memory | less  #less позволяет перемещаться вверх и вниз по выводу команды
 ```
-Almalinux      
-()  
+
+Вывод команды:
+
+Almalinux
+![](/HW1/assets/6-1.png)  
 Ubuntu     
-()  
+![](/HW1/assets/6-2.png) 
 
 # Получить информацию о жестком диске
 ```bash
 lshw -short -C disk
 ```
-Almalinux      
-()  
+Almalinux
+![](/HW1/assets/5-1.png)  
 Ubuntu     
-()  
+![](/HW1/assets/5-2.png) 
+
 
 # Добавить в виртуальную машину второй сетевой интерфейс (вывести информацию о нем в виртуалках)
+
+1. Settings
+
+2. Add device
+
+3. Network adapter
+
+Увидеть доступные сетевые интерфейсы:
+
+```bash
+ip a
+```
+Ubuntu  
+()  
 Almalinux  
+()  
+
 
 Ubuntu
 # Узнать полную информацию об использованной и неиспользованной оперативной памяти
+
+```bash
+free
+```
+Almalinux  
+()  
+Ubuntu  
+()  
+
 # Создать пользователя new_admin_user, Настроить ssh доступ пользователю по ключу на VM, запретить ему авторизацию по паролю
+> В качестве сервера используется Almalinux,а в качестве клиента - Ubuntu
+
+Сервер:
+
+
+
+
+
 # Вывести список файловых систем, которые поддерживаются ядром
+
+```bash
+cat /proc/filesystems
+```
+Almalinux  
+()  
+Ubuntu  
+()  
