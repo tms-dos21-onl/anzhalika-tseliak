@@ -100,9 +100,9 @@ Almalinux
 Ubuntu     
 ![](/HW1/assets/5-2.png) 
 # Добавить в виртуальную машину второй сетевой интерфейс (вывести информацию о нем в виртуалках)
-1. Settings
-2. Add device
-3. Network adapter
+Settings
+Add device
+Network adapter
 Увидеть доступные сетевые интерфейсы:
 ```bash
 ip a
@@ -126,36 +126,36 @@ Ubuntu
 ![](/HW1/assets/8-2.png) 
 # Создать пользователя new_admin_user, Настроить ssh доступ пользователю по ключу на VM, запретить ему авторизацию по паролю
 > В качестве сервера используется Almalinux,а в качестве клиента - Ubuntu
-1. 
+
 Создание юзера на сервере
 ``` bash
 sudo adduser new_admin_user
 ```
-2.Установка ssh на сервер
+Установка ssh на сервер
 ``` bash
 sudo dnf install openssh-server
 ```
-3.Проверка статуса демона:
+Проверка статуса демона:
 ```bash
 sudo systemctl status sshd
 ```
-4.Установка ssh на клиент
+Установка ssh на клиент
 ```bash
 sudo apt-get install openssh-server
 ```
-5.Проверка статуса ssh
+Проверка статуса ssh
 ``` bash
 sudo systemctl status sshd
 ```
-6.Генерирование ключей:
+Генерирование ключей:
 ``` bash
 sudo ssh-keygen
 ```
-7.Копирование публичного ключа на сервер:
+Копирование публичного ключа на сервер:
 ```
 ssh-copy-id new_admin_user@172.16.197.149
 ```
-8.Отключение входа по паролю для new_admin_user с помощью записи в конфигурационном файле на сервере:
+Отключение входа по паролю для new_admin_user с помощью записи в конфигурационном файле на сервере:
 
 ``` bash
 sudo nano /etc/ssh/sshd_config
@@ -165,7 +165,7 @@ sudo nano /etc/ssh/sshd_config
 Match User new_admin_user
  PasswordAuthentication no
 ```
-9.Перезапуск службы 
+Перезапуск службы 
 ``` bash
 sudo service sshd restart
 ```
