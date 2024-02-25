@@ -91,10 +91,9 @@ sudo groupadd birds
 ```
 
 Добавление пользователя:
--a — добавление пользователя -G — указание группы  или -aG
 
 ``` bash
-sudo usermod -a -G birds penguin 
+sudo usermod -a -G birds penguin  # -a —добавление пользователя  -G —указание группы  или -aG
 ```
 Проверка:
 
@@ -104,6 +103,27 @@ cat /etc/group | grep penguin
 ![](/HW2/assets/4-1.png)  
 
 Cоздать директорию /var/wintering и выдать права на нее только группе birds.
+-
+
+Создание директории:
+
+``` bash
+mkdir /var/wintering
+```
+
+Выдача прав:
+ 
+``` bash
+sudo chown :birds /var/wintering
+```
+()  
+
+Проверка:
+
+``` bash
+ls -l /var/ | grep wintering
+```
+()
 
 Установить ntpd (или chrony) и разрешить пользователю penguin выполнять команду systemctl restart chronyd (нужны права sudo). Больше узнать о том, что такое NTP и почему он важен можно из следующей статьи.
 
