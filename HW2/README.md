@@ -91,7 +91,7 @@ sudo groupadd birds
 ```
 
 Добавление пользователя:
--a — добавление пользователя -G — указание группы или -aG
+-a — добавление пользователя -G — указание группы  или -aG
 
 ``` bash
 sudo usermod -a -G birds penguin 
@@ -101,7 +101,7 @@ sudo usermod -a -G birds penguin
 ``` bash
 cat /etc/group | grep penguin
 ```
-()
+![](/HW2/assets/4-1.png)  
 
 Cоздать директорию /var/wintering и выдать права на нее только группе birds.
 
