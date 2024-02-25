@@ -50,21 +50,21 @@ sudo mkfs.ext4 /dev/nvme0n2
 ``` bash
 sudo mkdir /mnt/home 
 ```
-()  
+![](/HW2/assets/2-1.png)  
 
 Монтирование:
 
 ``` bash
 sudo mount /dev/nvme0n2 /mnt/home
 ```
-()  
+![](/HW2/assets/2-2.png)    
 
 Проверка:
 
 ``` bash
 cat /proc/mounts | grep nvme0n2
 ```
-()
+![](/HW2/assets/2-3.png)  
 
 Создать нового пользователя penguin с home-директорией /mnt/home/penguin.
 
