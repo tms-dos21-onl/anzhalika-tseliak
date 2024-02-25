@@ -82,6 +82,26 @@ sudo cat /etc/passwd | grep penguin
 ![](/HW2/assets/3-1.png)  
 
 Создать новую группу пользователей birds, перенести в нее пользователя penguin.
+-
+
+Создание группы:
+
+``` bash
+sudo groupadd birds
+```
+
+Добавление пользователя:
+-a — добавление пользователя -G — указание группы или -aG
+
+``` bash
+sudo usermod -a -G birds penguin 
+```
+Проверка:
+
+``` bash
+cat /etc/group | grep penguin
+```
+()
 
 Cоздать директорию /var/wintering и выдать права на нее только группе birds.
 
