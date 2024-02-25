@@ -67,6 +67,19 @@ cat /proc/mounts | grep nvme0n2
 ![](/HW2/assets/2-3.png)  
 
 Создать нового пользователя penguin с home-директорией /mnt/home/penguin.
+-
+Создание:
+
+``` bash
+sudo useradd penguin -b /mnt/home/  # -b -base dir
+```
+
+Проверка:
+
+``` bash
+sudo cat /etc/passwd | grep penguin
+```
+()
 
 Создать новую группу пользователей birds, перенести в нее пользователя penguin.
 
