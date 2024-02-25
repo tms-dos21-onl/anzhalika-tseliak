@@ -43,8 +43,28 @@ sudo mkfs.ext4 /dev/nvme0n2
 ```
 ![](/HW2/assets/1-7.png) 
 
+Смонтировать директорию /mnt/home на только что созданный раздел.  
+-
+Создание точки монтирования:
 
-Смонтировать директорию /mnt/home на только что созданный раздел.
+``` bash
+sudo mkdir /mnt/home 
+```
+()  
+
+Монтирование:
+
+``` bash
+sudo mount /dev/nvme0n2 /mnt/home
+```
+()  
+
+Проверка:
+
+``` bash
+cat /proc/mounts | grep nvme0n2
+```
+()
 
 Создать нового пользователя penguin с home-директорией /mnt/home/penguin.
 
