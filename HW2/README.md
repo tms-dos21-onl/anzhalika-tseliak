@@ -79,7 +79,7 @@ sudo useradd penguin -b /mnt/home/  # -b -base dir
 ``` bash
 sudo cat /etc/passwd | grep penguin
 ```
-()
+![](/HW2/assets/3-1.png)  
 
 Создать новую группу пользователей birds, перенести в нее пользователя penguin.
 
