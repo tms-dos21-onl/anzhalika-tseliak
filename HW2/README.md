@@ -49,6 +49,27 @@ sudo mkfs.ext4 /dev/nvme0n2
 
 
 Смонтировать директорию /mnt/home на только что созданный раздел.
+-
+Создание точки монтирования:
+
+``` bash
+sudo mkdir /mnt/home 
+```
+Монтирование:
+
+``` bash
+sudo mount /dev/nvme0n2 /mnt/home
+```
+ Проверка:
+
+``` bash
+cat /proc/mounts | grep nvme0n2
+```
+![](/HW2/assets/2-1.png)  
+
+
+
+
 Создать нового пользователя penguin с home-директорией /mnt/home/penguin.
 Создать новую группу пользователей birds, перенести в нее пользователя penguin.
 Cоздать директорию /var/wintering и выдать права на нее только группе birds.
