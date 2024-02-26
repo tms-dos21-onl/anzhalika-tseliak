@@ -67,10 +67,27 @@ cat /proc/mounts | grep nvme0n2
 ```
 ![](/HW2/assets/2-1.png)  
 
-
-
-
 Создать нового пользователя penguin с home-директорией /mnt/home/penguin.
+-
+Создание:
+
+``` bash
+sudo useradd  -m -d  /mnt/home/penguin  penguin  # -m, —create-home ; -d , —home-dir
+```
+Переключение на юзера penguin:
+
+``` bash
+su penguin
+```
+Проверка:
+
+``` bash
+echo $HOME
+```
+![](/HW2/assets/3-1.png)  
+
+
+
 Создать новую группу пользователей birds, перенести в нее пользователя penguin.
 Cоздать директорию /var/wintering и выдать права на нее только группе birds.
 Установить ntpd (или chrony) и разрешить пользователю penguin выполнять команду systemctl restart chronyd (нужны права Больше узнать о том, что такое NTP и почему он важен.
