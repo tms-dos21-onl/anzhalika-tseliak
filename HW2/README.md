@@ -106,10 +106,46 @@ cat /etc/group | grep penguin
 ```
 ![](/HW2/assets/4-1.png)  
 
-
-
-
 Cоздать директорию /var/wintering и выдать права на нее только группе birds.
+-
+Создание директории:
+
+``` bash
+mkdir /var/wintering
+```
+
+Смена владельца:
+ 
+``` bash
+sudo chown :birds /var/wintering
+```
+![](/HW2/assets/5-1.png)   
+
+Проверка текущих прав:
+
+``` bash
+ls -l /var/ | grep wintering
+```
+![](/HW2/assets/5-2.png)  
+
+Изменение прав для всех кроме группы:
+
+``` bash
+sudo chmod uo-rwx /var/wintering
+```
+
+Выдача прав группе:
+
+``` bash
+sudo chmod g+rwx /var/wintering
+```
+Проверка:
+
+``` bash
+ls -l /var/ | grep wintering
+```
+![](/HW2/assets/5-3.png)  
+
 Установить ntpd (или chrony) и разрешить пользователю penguin выполнять команду systemctl restart chronyd (нужны права Больше узнать о том, что такое NTP и почему он важен.
 Вывод команды iostat -x в последней колонке показывает загрузку дисков в процентах. Откуда утилита это понимает?
 Достаточно ли вывода команды iostat -x для того, чтобы оценить реальную нагрузку на диски, или нужны дополнительные условия или ключи?
