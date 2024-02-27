@@ -183,6 +183,7 @@ sudo systemctl restart chronyd
 ``` bash
 sudo journalctl | grep chronyd | less #less дает возможность перемещения по выводу на серверной ubuntu
 ```
+![](/HW2/assets/6-3.png) 
 
 
 Вывод команды iostat -x в последней колонке показывает загрузку дисков в процентах. Откуда утилита это понимает?
