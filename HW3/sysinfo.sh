@@ -1,4 +1,4 @@
-#! /bin/bash 
+#!/bin/bash 
 
 ram=$(free --mega | grep ‘Mem:’ | awk ‘{print $4}’)
 #ram -переменная со следующим значением:
