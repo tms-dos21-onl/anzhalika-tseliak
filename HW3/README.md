@@ -5,8 +5,43 @@
 Содержимое корневой директории:
 ![](/HW3/assets/1-1.png) 
 
+Установить PowerShell на VM и проверить, что он работаёт путем выполнения каких-нибудь простейших команд.
+-
+Обновление пакетов:
 
- Установить PowerShell на VM и проверить, что он работаёт путем выполнения каких-нибудь простейших команд.
+``` bash
+sudo apt-get update
+``` 
+
+Установка необходимых пакетов:
+
+``` bash
+sudo apt-get install -y wget
+``` 
+
+Скачивание PowerShell tar для Ubuntu arm64:
+
+``` bash
+wget https://github.com/PowerShell/PowerShell/releases/download/v7.2.9/powershell-7.2.9-linux-arm64.tar.gz
+``` 
+Распаковка архива:
+
+``` bash
+tar xfz powershell-7.2.9-linux-arm64.tar.gz 
+```
+Проверка:
+
+``` bash
+./pwsh
+``` 
+![](/HW3/assets/2-1.png) 
+
+Извлечь список всех установленных команд:
+
+``` bash
+Get-Command | less  # less позволяет перемещаться по выводу
+```
+![](/HW3/assets/2-2.png) 
  
  Создать простейший bash-скрипт sysinfo.sh, который собирает данные о:
  количестве свободной оперативной памяти
