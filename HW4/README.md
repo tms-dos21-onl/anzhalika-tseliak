@@ -130,4 +130,28 @@ journalctl -f -u blabla  #-f -аналог tail,отслеживание в ре
 
 
 Добавить в cron задачу, которая будет каждые 10 минут писать в файл результаты выполнения скрипта из п.7
+-
+
+Добавление задачи в chrontab файл:
+
+``` bash
+chrontab -e  
+```
+
+Добавление  строки:
+
+``` bash
+*/10 * * * * bash sysinfo2.sh >> /home/user/results  
+```
+![](/HW4/assets/8-1.png) 
+
+Просмотр файла c результатами скрипта:
+
+``` bash
+cat results
+```
+![](/HW4/assets/8-2.png) 
+
 Сделать п. 5 для Prometheus Node Exporter
+
+
