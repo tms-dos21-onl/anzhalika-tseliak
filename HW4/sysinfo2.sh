@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "$(date "+%T")"
+
 processes=$(ps -U "user" | wc -1) 
     echo "User processes:${processes}"
 
