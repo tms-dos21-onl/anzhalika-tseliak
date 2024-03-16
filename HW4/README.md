@@ -153,5 +153,68 @@ cat results
 ![](/HW4/assets/8-2.png) 
 
 Сделать п. 5 для Prometheus Node Exporter
+-
+
+node exporter для arm64:
+
+``` bash
+curl -L https://github.com/prometheus/node_exporter/releases/download/v1.7.0/node_exporter-1.7.0.linux-arm64.tar.gz --output node_exporter.tar.gz  #-L -позволяет curl отправить запрос в новое место, если она встречает перенаправление
+```
+
+Разархивирование:
+
+``` bash
+tar -xf node_exporter.tar.gz
+```
+
+Проверка работы node exporter:
+
+``` bash
+./node_exporter
+```
+
+Создание сервис файла:
+
+``` bash
+sudo nano node_exporter.service
+```
+
+``` bash
+[Unit]
+Description=Node Exporter
+[Service]
+User=user2
+WorkingDirectory=/home/user2/ ExecStart=/home/user2/node_exporter
+Restart=always
+RestartSec=3
+[Install]
+WantedBy=multi-user.target
+``` 
+
+Перезагрузка демона:
+
+``` bash
+systemctl daemon-reload
+``` 
+
+Запуск сервиса:
+
+``` bash
+systemctl start node_exporter
+```
+
+Проверка сервиса:
+
+``` bash
+systemctl status node_exporter
+```
+
+Проверка порта 9100:
+
+``` bash
+lsof -i TCP:9100 #lsof -i -позволяет определить какой процесс искрльзует порт
+```
+
+
 
 
