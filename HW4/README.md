@@ -173,6 +173,8 @@ tar -xf node_exporter.tar.gz
 ./node_exporter
 ```
 
+![](/HW4/assets/9-1.png) 
+
 Создание сервис файла:
 
 ``` bash
@@ -208,13 +210,14 @@ systemctl start node_exporter
 ``` bash
 systemctl status node_exporter
 ```
+![](/HW4/assets/9-2.png) 
 
 Проверка порта 9100:
 
 ``` bash
-lsof -i TCP:9100 #lsof -i -позволяет определить какой процесс искрльзует порт
+lsof -i TCP:9100 #lsof -i -позволяет определить каким процессом используется порт
 ```
-
+![](/HW4/assets/9-3.png) 
 
 
 
