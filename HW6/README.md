@@ -68,4 +68,20 @@ arp -n #-n -выводить только IP адреса
 
 ![](/HW6/assets/4-3.png) 
   
-5. Найти IP адрес соответствующий доменному имени ya.ru. Выполнить HTTP запрос на указанный IP адрес, чтобы скачать страницу с помощью утилиты curl. В результате должна вывестись HTML страничка в консоль. Подсказка: https://stackoverflow.com/questions/46563730/can-i-access-to-website-using-ip-address
+Найти IP адрес соответствующий доменному имени ya.ru. Выполнить HTTP запрос на указанный IP адрес, чтобы скачать страницу с помощью утилиты curl. В результате должна вывестись HTML страничка в консоль. Подсказка: https://stackoverflow.com/questions/46563730/can-i-access-to-website-using-ip-address
+-
+Узнать IP адрес:
+
+``` bash
+curl -v ya.ru
+``` 
+![](/HW6/assets/5-1.png) 
+
+Использование curl и заголовка host для обхода балансировщика нагрузки:
+
+``` bash
+curl -LH "Host: ya.ru"  "http://77.88.55.242"
+``` 
+![](/HW6/assets/5-2.png) 
+
+
