@@ -212,11 +212,7 @@ systemctl status node_exporter
 ```
 ![](/HW4/assets/9-2.png) 
 
-Проверка порта 9100:
 
-``` bash
-lsof -i TCP:9100 #lsof -i -позволяет определить каким процессом используется порт
-```
 ![](/HW4/assets/9-3.png) 
 
 
