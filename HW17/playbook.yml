@@ -5,9 +5,9 @@
   tasks:
   - name: Update and upgrade apt packages 
     apt:
-     force_apt._get: true
+     force_apt_get: true
      update_cache: true
-     upgrade: "yes"'
+     upgrade: "yes"
 
   - name: Install all dependencies 
     ansible.builtin.apt:
@@ -16,7 +16,7 @@
     with_items:
     - php8.1
     - php8.1-curl
-    - php8. 1-memcached
+    - php8.1-memcached
     - php8.1-mysql
     - apache2
     - libapache2-mod-php
@@ -26,7 +26,7 @@
   
   - name: Delete repo if exists 
     file:
-      path: /var/www/html/simple-1amp
+      path: /var/www/html/simple-lamp
       state: absent
 
   - name: Clone repo with app 
@@ -37,7 +37,8 @@
   - name: Recursively change ownership for uploads 
     file:
       path: /var/www/html/simple-lamp/uploads 
-      state: directory recurse: yes
+      state: directory 
+      recurse: yes
       owner: www-data
       group: www-data
 
