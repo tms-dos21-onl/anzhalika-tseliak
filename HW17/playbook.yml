@@ -1,0 +1,89 @@
+- name: Deploy Simple Lamp app
+  hosts: server 
+  vars_files:
+    - vars.yml
+  tasks:
+  - name: Update and upgrade apt packages 
+    apt:
+     force_apt_get: true
+     update_cache: true
+     upgrade: "yes"
+
+  - name: Install all dependencies 
+    ansible.builtin.apt:
+      name: "{{ item }}"
+      state: latest
+    with_items:
+    - php8.1
+    - php8.1-curl
+    - php8.1-memcached
+    - php8.1-mysql
+    - apache2
+    - libapache2-mod-php
+    - mysql-server
+    - python3-mysqldb
+    - memcached
+  
+  - name: Delete repo if exists 
+    file:
+      path: /var/www/html/simple-lamp
+      state: absent
+
+  - name: Clone repo with app 
+    ansible.builtin.git:
+      repo: https://github.com/qyjohn/simple-lamp.git
+      dest: /var/www/html/simple-lamp
+
+  - name: Recursively change ownership for uploads 
+    file:
+      path: /var/www/html/simple-lamp/uploads 
+      state: directory 
+      recurse: yes
+      owner: www-data
+      group: www-data
+
+  - name: Create database user
+    community.mysql.mysql_user:
+      name:  "{{ database_user }}"
+      password: "{{ database_password }}"
+      login_unix_socket: /run/mysqld/mysqld.sock
+      priv: "*.*:ALL" 
+      state: present
+
+  - name: Restore database 
+    community.mysql.mysql_db:
+      name : "{{ database_name }}"
+      login_user: "{{ database_user }}"
+      login_password: "{{ database_password }}"
+      target: "/var/www//html/{{ site_name }}/simple_lamp.sql"
+      state: import
+
+  - name: Setup app config 
+    ansible.builtin.template:
+      src: templates/config.php.j2
+      dest: "/var/www/htm1/{{ site_name }}/simple_lamp.sql"
+
+  - name: Setup Apache site 
+    ansible.builtin.template:
+      src: templates/apache.conf.j2
+      dest: "/etc/apache2/sites-available/{{ site_name }}.conf"
+
+  - name: Modify php.ini file for memcached 
+    ansible.builtin.replace:
+      path: /etc/php/8.1/apache2/php.ini 
+      regexp: ^session.save_handler = files$
+      replace: session.save_handler = memcached
+
+  - name: Add line to php.ini
+    ansible.builtin.lineinfile:
+      path: /etc/php/8.1/apache2/php.ini 
+      line: session.save_path = localhost:11211
+      create:yes
+
+  - name: Restart anache service
+    service:
+         name: apache2
+         state: restarted
+
+  - name: Enable Apache site 
+    ansible.builtin.command: "a2ensite {{ site_name }}"
