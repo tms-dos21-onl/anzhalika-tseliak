@@ -1,0 +1,45 @@
+name: CI with Maven
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+     
+      - name: Clone
+        uses: actions/checkout@v4
+        with:
+          repository: tms-dos21-onl/spring-petclinic
+          ssh-key: ${{ secrets.SSH_KEY }}
+
+      - name: Setup Java
+        uses: actions/setup-java@v4.2.1
+        with: 
+          java-version: '17'
+          distribution: 'temurin'
+      
+      - name: Build
+        run: mvn --batch-mode -DskipTests package
+        
+      - name: Test
+        run: mvn --batch-mode -Dmaven.test.failure.ignore=true test
+
+      - name: Publish
+        uses: dorny/test-reporter@v1
+        if: always()
+        with:
+          name: Maven Tests
+          path: target/surefire-reports/*.xml
+          reporter: java-junit
+          fail-on-error: true
+      
+      - name: Notification
+        uses: cinotify/github-action@main
+        with:
+         to: "anzhalikatseliak@gmail.com"
+         subject: "building main"
+         body: "This is a notification from GitHub actions."
