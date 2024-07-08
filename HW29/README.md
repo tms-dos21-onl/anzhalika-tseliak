@@ -105,7 +105,7 @@ vim ~/azp-agent-in-docker/azp-agent-linux.dockerfile
 
 [azp-agent-linux.dockerfile](/HW29/azp-agent-linux.dockerfile) 
 
-Для избежания ощибки с java в пайплайне необходимо добавить в образ openjdk-17-jdk и при запуске контиейнера добавить переменную:  
+Для избежания ошибки с java в пайплайне необходимо добавить в образ openjdk-17-jdk и при запуске контиейнера добавить переменную:  
 '-e JAVA_HOME_17_X64="/usr/lib/jvm/java-17-openjdk-amd64'
 
 Создание образа:
@@ -118,17 +118,6 @@ docker build --platform linux/amd64 --tag "azp-agent:linux" --file "./azp-agent-
 docker run --platform linux/amd64 -e AZP_URL="https://dev.azure.com/anzhalikatseliak" -e AZP_TOKEN=<SECRET> -e AZP_POOL="docker" -e AZP_AGENT_NAME="Docker Agent - Linux" -e JAVA_HOME_17_X64="/usr/lib/jvm/java-17-openjdk-amd64"  --name "azp-agent-linux" azp-agent:linux
 ```
 
-- Создать пайплайн
-
->Pipelines -> Create Pipeline -> Azure Repos Git -> Select a repository -> spring-pet-clinic
-
->Configure your pipeline -> Gradle
-
-Редактирование пайплайна:
-
-Изменить jdkVersionOption:'1.17' -> Save and run 
-
-Gradle шаг упадет с ошибкой:
 
 
 Результат:
