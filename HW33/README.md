@@ -57,6 +57,7 @@ Cозданное правило с приоритетом 65535:
 - Создание firewall правила для icmp
 
 >VPC network -> Firewall -> +CREATE FIREWALL RULE
+
 ![](./assets/6-4.png) 
 
 - RERUN теста
